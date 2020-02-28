@@ -1,31 +1,32 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Feb 10 20:15:37 2020
+Created on Fri Feb 28 07:09:15 2020
 
-@author: manis_4ol2faq
+@author: manis_apezuzf
 """
 
-'''
-def f(n,arr): #Function returning coin sums for value of n
-    if n<0:
-        return 0
-    elif n==0:
-        return 1 
-    elif arr[n]!=-1:
-        return arr[n]
-    else:
-        x=f(n-1,arr)+f(n-2,arr)+f(n-5,arr)+f(n-10,arr)+f(n-20,arr)+f(n-50,arr)+f(n-100,arr)+f(n-200,arr)
-        arr[n]=x
-        return x
-arr=[-1]*300
-print(f(200,arr))
-'''
+def main():
+    import numpy as np
+    coins=[1,2,5,10,20,50,100,200]
+    N=200
+    arr = np.zeros(shape=(N+1,len(coins)),dtype=int)
+    
+    for i in range(len(coins)):
+        arr[0][i]=1
+    for n in range(1,N+1):
+        if n%coins[0]==0:
+            arr[n][0]=1
+        else:
+            arr[n][0]=1
+    for n in range(1,N+1):
+        for i in rang`e(1,len(coins)):
+            for k in range(i+1):
+                if n>=coins[k]:
+                    arr[n][i]+=arr[n-coins[k]][k]
+    print(arr[N,len(coins)-1])
 
-coin_list=[5,2,1]
-n=10
-i=0
-for xi in range(len(coin_list)):
-    temp_n=n-xi*i
-    
-    
-            
+if __name__ == '__main__':
+    import time
+    start_time = time.time()
+    main()
+    print("Program run time(in s): ", (time.time() - start_time)) 
