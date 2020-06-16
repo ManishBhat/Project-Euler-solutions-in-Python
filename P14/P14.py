@@ -4,8 +4,9 @@ Created on Wed Dec 25 04:41:52 2019
 
 @author: manis
 """
+import numpy as np
 import time
-start_time = time.time()
+
 
 def collatz(N,collatz_arr):
     n=int(N)
@@ -28,24 +29,28 @@ def collatz(N,collatz_arr):
                 collatz_arr[n]=x
             return x
             
+def main():
+    N=1000000
+    collatz_arr=np.zeros(N, dtype = np.int32)
+    collatz_arr[1]=1
+    maxcollatz=n=11
+    max
+    #print('HI')
+    '''
+    for n in range(1,100):
+        #print('HER',n)
+        print(n,collatz(n,collatz_arr))
+        #print('YES',n)
+    '''
+    for n in range(1,N):
+        if collatz(n,collatz_arr)>maxcollatz:
+            maxcollatz=collatz(n,collatz_arr)
+            maxn=n
+    print("Number with largest collatz sequence: ",maxn)
+    print("Sequence length: ",maxcollatz)
 
-N=1000000
-collatz_arr=[0]*100000
-collatz_arr[1]=1
-maxcollatz=1
-maxn=1
-#print('HI')
-'''
-for n in range(1,100):
-    #print('HER',n)
-    print(n,collatz(n,collatz_arr))
-    #print('YES',n)
-'''
-for n in range(1,N):
-    if collatz(n,collatz_arr)>maxcollatz:
-        maxcollatz=collatz(n,collatz_arr)
-        maxn=n
-print("Number with largest collatz sequence: ",maxn)
-print("Sequence length: ",maxcollatz)
 
-print("Program run time(in s): ", (time.time() - start_time))
+if __name__ == '__main__':
+    start_time = time.time()
+    main()
+    print("Program run time(in s): ", (time.time() - start_time))

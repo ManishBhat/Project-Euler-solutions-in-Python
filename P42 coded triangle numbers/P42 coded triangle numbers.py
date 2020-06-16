@@ -26,6 +26,6 @@ for word in data:
         no_of_triangle_words+=1
 print(no_of_triangle_words)
 print("Program run time(in s): ", (time.time() - start_time))
-
+ 
 
 

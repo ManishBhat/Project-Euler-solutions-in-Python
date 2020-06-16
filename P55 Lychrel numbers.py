@@ -9,6 +9,7 @@ def is_palin(n): #Function to check if an integer n is a palindrome
     if str(n)==str(n)[::-1]:
         return True
     return False
+
 def lychrel_counter(n,lychrel_counter_arr):
     counter=0
     sum=n
