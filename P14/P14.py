@@ -4,9 +4,9 @@ Created on Wed Dec 25 04:41:52 2019
 
 @author: manis
 """
-import numpy as np
-import time
 
+import time
+from numba import jit
 
 def collatz(N,collatz_arr):
     n=int(N)
@@ -28,24 +28,20 @@ def collatz(N,collatz_arr):
             if n<len(collatz_arr):
                 collatz_arr[n]=x
             return x
+
             
 def main():
-    N=1000000
-    collatz_arr=np.zeros(N, dtype = np.int32)
-    collatz_arr[1]=1
-    maxcollatz=n=11
-    max
-    #print('HI')
-    '''
-    for n in range(1,100):
-        #print('HER',n)
-        print(n,collatz(n,collatz_arr))
-        #print('YES',n)
-    '''
-    for n in range(1,N):
-        if collatz(n,collatz_arr)>maxcollatz:
-            maxcollatz=collatz(n,collatz_arr)
-            maxn=n
+    N = 1_000_000
+    collatz_arr = [0] * N
+    collatz_arr[1] = 1
+    maxcollatz = n = 11
+    maxn = 1
+
+    for n in range(1, N):
+        x = collatz(n, collatz_arr)
+        if x > maxcollatz:
+            maxcollatz = x
+            maxn = n
     print("Number with largest collatz sequence: ",maxn)
     print("Sequence length: ",maxcollatz)
 
