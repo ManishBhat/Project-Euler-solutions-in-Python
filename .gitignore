@@ -1,0 +1,5 @@
+*.pyc
+*.ini
+
+__pycache__/
+.pylint.d/
