@@ -6,7 +6,6 @@ Created on Wed Dec 25 04:41:52 2019
 """
 
 import time
-from numba import jit
 
 def collatz(N,collatz_arr):
     n=int(N)
