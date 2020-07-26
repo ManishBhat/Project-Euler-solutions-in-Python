@@ -5,33 +5,126 @@ Created on Sun Jul 26 00:02:41 2020
 
 @author: manish
 """
-def tri(n, mydict):
-    return int(n*(n+1)/2)
-    add_dict(n, mydict, 'tri')
-def sq(n, mydict):
-    return n**2
-    add_dict(n, mydict, 'squ')
-def pent(n, mydict):
-    return int(n*(3*n-1)/2)
-    add_dict(n, mydict, 'pen')
-def hexag(n, mydict):
-    return n*(2*n-1)
-    add_dict(n, mydict, 'hex')
-def hepta(n, mydict):
-    return int(n*(5*n-3)/2)
-    add_dict(n, mydict, 'hept')
-def octa(n, mydict):
-    return n*(3*n-2)
-    add_dict(n, mydict, 'oct')
 
-def add_dict(n,mydict, mystr):
-    if 1_000<=n and n < 10_000:
-        mydict[n%100] = mydict.get(n%100, [])
-        mydict[n%100].append((mystr, n))    
 
-n = 1
-mydict = {}
-while True:
-    a, b, c = tri(n, mydict), sq(n, mydict), pent(n, mydict)
-    d, e, f = hexag(n, mydict), hepta(n, mydict), octa(n, mydict)
+class poly_num: # Creating class for polygonal numbers
+    def __init__(self, num, num_type):
+        self.num = num
+        self.type = num_type
+
+
+
+def tri(f2d, l2d):
+    n = 0
+    while True:
+        n += 1
+        num = int(n*(n+1)/2)
+        if num >= 10_000:
+            break
+        if num < 1000:
+            continue
+        pnum = poly_num(num, 'tri')
+        f2d[int(num/100)].append(pnum)
+        l2d[num%100].append(pnum)
+        
+
+def sq(f2d, l2d):
+    n = 0
+    while True:
+        n += 1
+        num = n**2
+        if num >= 10_000:
+            break
+        if num < 1000:
+            continue
+        pnum = poly_num(num, 'sq')
+        f2d[int(num/100)].append(pnum)
+        l2d[num%100].append(pnum)
+        
+            
+def pent(f2d, l2d):
+    n = 0
+    while True:
+        n += 1
+        num = int(n*(3*n-1)/2)
+        if num >= 10_000:
+            break
+        if num < 1000:
+            continue
+        pnum = poly_num(num, 'pent')
+        f2d[int(num/100)].append(pnum)
+        l2d[num%100].append(pnum)
     
+def hexag(f2d, l2d):
+    n = 0
+    while True:
+        n += 1
+        num = n*(2*n-1)
+        if num >= 10_000:
+            break
+        if num < 1000:
+            continue
+        pnum = poly_num(num, 'hex')
+        f2d[int(num/100)].append(pnum)
+        l2d[num%100].append(pnum)
+
+def hepta(f2d, l2d):
+    n = 0
+    while True:
+        n += 1
+        num = int(n*(5*n-3)/2)
+        if num >= 10_000:
+            break
+        if num < 1000:
+            continue
+        pnum = poly_num(num, 'hept')
+        f2d[int(num/100)].append(pnum)
+        l2d[num%100].append(pnum)
+
+
+def octa(f2d, l2d):
+    n = 0
+    while True:
+        n += 1
+        num = n*(3*n-2)
+        if num >= 10_000:
+            break
+        if num < 1000:
+            continue
+        pnum = poly_num(num, 'oct')
+        f2d[int(num/100)].append(pnum)
+        l2d[num%100].append(pnum)
+
+def main():
+    f2d = [ [] for _ in range(100) ]
+    l2d = [ [] for _ in range(100) ]
+    tri(f2d, l2d)
+    sq(f2d, l2d)
+    pent(f2d, l2d)
+    hexag(f2d, l2d)
+    hepta(f2d, l2d)
+    octa(f2d, l2d)
+
+    for ind in range(100):
+        ntype = []
+        if l2d[ind] is None:
+            continue
+        for x1 in l2d[ind]:
+            ntype.append(x1.type)
+            if f2d[x1.num%100] is None:
+                continue
+            for x2 in f2d[x1.num%100]:
+                if x2.type not in ntype:
+                    ntype.append(x2.type)
+                    if f2d[x2.num%100] is None:
+                        continue
+                    for x3 in f2d[x2.num%100]:
+                        if x3.type not in ntype:
+                            if x1 in f2d[x3.num%100]:
+                                ntype.append(x3.type)
+                                print(x1.num, x2.num, x3.num, x1.type, x2.type, x3.type)
+
+main()
+                            
+                    
+        
