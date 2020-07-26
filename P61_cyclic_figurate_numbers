@@ -1,0 +1,37 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Jul 26 00:02:41 2020
+
+@author: manish
+"""
+def tri(n, mydict):
+    return int(n*(n+1)/2)
+    add_dict(n, mydict, 'tri')
+def sq(n, mydict):
+    return n**2
+    add_dict(n, mydict, 'squ')
+def pent(n, mydict):
+    return int(n*(3*n-1)/2)
+    add_dict(n, mydict, 'pen')
+def hexag(n, mydict):
+    return n*(2*n-1)
+    add_dict(n, mydict, 'hex')
+def hepta(n, mydict):
+    return int(n*(5*n-3)/2)
+    add_dict(n, mydict, 'hept')
+def octa(n, mydict):
+    return n*(3*n-2)
+    add_dict(n, mydict, 'oct')
+
+def add_dict(n,mydict, mystr):
+    if 1_000<=n and n < 10_000:
+        mydict[n%100] = mydict.get(n%100, [])
+        mydict[n%100].append((mystr, n))    
+
+n = 1
+mydict = {}
+while True:
+    a, b, c = tri(n, mydict), sq(n, mydict), pent(n, mydict)
+    d, e, f = hexag(n, mydict), hepta(n, mydict), octa(n, mydict)
+    
