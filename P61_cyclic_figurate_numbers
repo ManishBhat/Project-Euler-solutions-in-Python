@@ -116,7 +116,7 @@ def main():
                 continue
             for x2 in f2d[x1.num%100]:
                 if x2.type in ntype:
-                        ntype.pop()
+                    ntype.pop()
                 else:
                     ntype.append(x2.type)
                     if f2d[x2.num%100] is None:
@@ -126,10 +126,35 @@ def main():
                         if x3.type in ntype:
                             ntype.pop()
                         else:
-                            if x1 in f2d[x3.num%100]:
-                                ntype.append(x3.type)
-                                print(x1.num, x2.num, x3.num, x1.type, x2.type, x3.type)
-
+                            ntype.append(x3.type)
+                            if f2d[x3.num%100] is None:
+                                ntype.pop()
+                                continue
+                            for x4 in f2d[x3.num%100]:
+                                if x4.type in ntype:
+                                    ntype.pop()
+                                else:
+                                    ntype.append(x4.type)
+                                    if f2d[x4.num%100] is None:
+                                        ntype.pop()
+                                        continue
+                                    for x5 in f2d[x4.num%100]:
+                                        if x5.type in ntype:
+                                            ntype.pop()
+                                        else:
+                                            ntype.append(x5.type)
+                                            if f2d[x5.num%100] is None:
+                                                ntype.pop()
+                                                continue
+                                            for x6 in f2d[x5.num%100]:
+                                                if x6.type in ntype:
+                                                    ntype.pop()
+                                                    continue
+                                                else:
+                                                    if x1 in f2d[x6.num%100] :
+                                                        print(x1.num, x2.num, x3.num, x4.num, x5.num, x6.num)
+                                                        print(x1.type, x2.type, x3.type, x4.type, x5.type, x6.type)
+                                                        
 main()
                             
                     
