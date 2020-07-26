@@ -107,19 +107,25 @@ def main():
 
     for ind in range(100):
         ntype = []
-        if l2d[ind] is None:
+        if f2d[ind] is None:
             continue
-        for x1 in l2d[ind]:
+        for x1 in f2d[ind]:
             ntype.append(x1.type)
             if f2d[x1.num%100] is None:
+                ntype.pop()
                 continue
             for x2 in f2d[x1.num%100]:
-                if x2.type not in ntype:
+                if x2.type in ntype:
+                        ntype.pop()
+                else:
                     ntype.append(x2.type)
                     if f2d[x2.num%100] is None:
+                        ntype.pop()
                         continue
                     for x3 in f2d[x2.num%100]:
-                        if x3.type not in ntype:
+                        if x3.type in ntype:
+                            ntype.pop()
+                        else:
                             if x1 in f2d[x3.num%100]:
                                 ntype.append(x3.type)
                                 print(x1.num, x2.num, x3.num, x1.type, x2.type, x3.type)
