@@ -19,7 +19,7 @@ def main():
         else:
             arr[n][0]=1
     for n in range(1,N+1):
-        for i in rang`e(1,len(coins)):
+        for i in range(1,len(coins)):
             for k in range(i+1):
                 if n>=coins[k]:
                     arr[n][i]+=arr[n-coins[k]][k]
