@@ -1,4 +1,4 @@
 # Project-Euler-solutions-in-Python
 I am writing solutions to Project Euler(https://projecteuler.net/) problems using Python.
-All the code that I have posted gave me the correct answer.
+I have solved all of the first 50 problems. I have also done around half of the problems between 50-100.
 Feel free to ask me any doubts regarding the code.
