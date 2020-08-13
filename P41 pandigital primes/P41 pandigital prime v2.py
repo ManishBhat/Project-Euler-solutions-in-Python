@@ -4,25 +4,10 @@ Created on Fri Feb 21 12:41:10 2020
 
 @author: manis
 """
-import time
-start_time = time.time()
 
+import time
 from math import sqrt
 from itertools import permutations
-
-def f(n):   #This code will find the sum of all primes below N
-    sieveoferat=[1]
-    sieveoferat=[True]*n
-    listofprimes=[]
-    for i in range(2,n):
-        if(sieveoferat[i]==True):
-            listofprimes.append(i)
-            j=2
-            while(j*i<n):
-                sieveoferat[j*i]=False
-                j=j+1
-    i=0
-    return sieveoferat
 
 def isPrime(n):
     if n<2:
@@ -32,11 +17,17 @@ def isPrime(n):
             return False
     return True
 
-
-lst=[''.join(p) for p in permutations("1234567")]
-
-for i in reversed(lst):
-    if isPrime(int(i)):
-        print(i)
-        break
-print("Program run time(in s): ", (time.time() - start_time))
+def Q41():
+    lst=[''.join(p) for p in permutations("1234567")]
+    # Note 5,6, 8 digit and 9 digit pandigital primes aren't possible as 
+    # the sum of digits is divisible by 3. Thus, we only have to test 7 digit
+    # pandigital numbers
+    for i in reversed(lst):
+        if isPrime(int(i)):
+            print(i)
+            break
+        
+if __name__ == "__main__":
+    start_time = time.time()
+    Q41()
+    print("Program run time(in s): ", (time.time() - start_time))
