@@ -28,6 +28,7 @@ def Q59():
         data = file.read().replace('\n','')
         data = data.replace('"', '')
         data=data.split(',')
+    print(data)
     
     freq1 = dict()
     freq2 = dict()
