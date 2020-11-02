@@ -4,7 +4,6 @@ Created on Sun Aug  2 14:14:52 2020
 
 @author: Manish
 """
-import numpy as np
 from math import sqrt
 from numba import jit
 
